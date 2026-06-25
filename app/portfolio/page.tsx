@@ -5,6 +5,17 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
+const portfolioImages = [
+  "/images/portfolio-main.png",
+  "/images/portfolio-2.png",
+  "/images/portfolio-3.png",
+  "/images/portfolio-4.png",
+  "/images/portfolio-5.png",
+  "/images/portfolio-6.png",
+  "/images/portfolio-7.png",
+  "/images/portfolio-8.png",
+];
+
 export default function Portfolio() {
   return (
     <main className="min-h-screen bg-white">
@@ -35,33 +46,29 @@ export default function Portfolio() {
       {/* Image Grid / Content */}
       <section className="px-6 md:px-8 pb-48">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 gap-32">
-            {/* Main Featured Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
-              className="relative aspect-[4/5] md:aspect-video bg-zinc-100 overflow-hidden"
-            >
-              <Image
-                src="/images/portfolio-main.png"
-                alt="Zeno Portfolio Piece"
-                fill
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-
-            {/* Placeholder for future images */}
-            <div className="grid md:grid-cols-2 gap-8">
-               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-300">Archive_002 / Upcoming</span>
-               </div>
-               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-300">Archive_003 / Upcoming</span>
-               </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {portfolioImages.map((src, index) => (
+              <motion.div
+                key={src}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.2,
+                  delay: (index % 2) * 0.2,
+                  ease: [0.77, 0, 0.175, 1]
+                }}
+                className="relative aspect-square bg-zinc-100 overflow-hidden"
+              >
+                <Image
+                  src={src}
+                  alt={`Zeno Portfolio Piece ${index + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority={index < 4}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
