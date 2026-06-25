@@ -24,21 +24,21 @@ export default function ContactPage() {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-zinc-50 -z-10" />
 
       {/* Navigation */}
-      <nav className="p-12">
+      <nav className="p-6 md:p-12">
         <Link href="/" className="group inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.4em] hover:text-zinc-500 transition-colors">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
           Return to Studio
         </Link>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-12 grid lg:grid-cols-2 gap-24 pt-12 pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-24 pt-12 pb-32">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[10px] uppercase tracking-[0.6em] text-zinc-400 mb-8 block">Inquiry</span>
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter uppercase mb-12">
+          <h1 className="text-7xl md:text-9xl break-words hyphens-auto font-black tracking-tighter uppercase mb-12">
             Let&apos;s<br />Engineer<br /><span className="text-zinc-200">Vision.</span>
           </h1>
           <div className="space-y-8 text-sm tracking-wide text-zinc-500 max-w-sm">
@@ -51,7 +51,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white p-12 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] rounded-sm relative"
+          className="bg-white p-6 md:p-12 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] rounded-sm relative"
         >
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-12">
@@ -164,8 +164,8 @@ export default function ContactPage() {
         </motion.div>
       </div>
 
-      <footer className="fixed bottom-12 left-12 mix-blend-difference text-white">
-         <p className="text-[10px] font-bold tracking-[0.5em] uppercase opacity-40 italic">Zeno Digital Studio / Est. 2024</p>
+      <footer className="fixed bottom-8 md:bottom-12 left-6 md:left-12 max-w-[calc(100vw-3rem)] md:max-w-none mix-blend-difference text-white">
+         <p className="text-[10px] font-bold tracking-[0.5em] break-words uppercase opacity-40 italic">Zeno Digital Studio / Est. 2024</p>
       </footer>
     </main>
   );
