@@ -1,92 +1,80 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { ArrowRight, ChevronRight, ArrowRight, ChevronRight } from "lucide-react";
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
+  const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
-  const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 0.9]);
-  const heroOpacity = useTransform(smoothProgress, [0, 0.15], [1, 0]);
-
   return (
-    <main ref={containerRef} className="relative min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-8 py-8 flex justify-between items-center mix-blend-difference text-white">
-        <Link href="/" className="text-xl font-black tracking-tighter uppercase">
-          Zeno<span className="text-zinc-500">.</span>
-        </Link>
-        <div className="flex gap-12 items-center text-[10px] font-bold tracking-[0.4em] uppercase">
-          <Link href="/contact" className="hover:text-zinc-400 transition-colors">Inquiry</Link>
-          <Link href="/contact" className="bg-white text-black px-6 py-2 rounded-full hover:bg-zinc-200 transition-colors">Start Project</Link>
+    <main className="relative min-h-screen">
+      {/* Navigation - Ultra Minimalist */}
+      <nav className="fixed top-0 left-0 w-full z-50 mix-blend-difference px-8 py-12 flex justify-between items-center">
+        <Link href="/" className="text-xl font-black uppercase tracking-[0.3em] text-white">Zeno</Link>
+        <div className="flex gap-12 items-center">
+          <Link href="/portfolio" className="text-[10px] font-bold uppercase tracking-widest text-white hover:opacity-50 transition-opacity">Portfolio</Link>
+          <Link href="/contact" className="text-[10px] font-bold uppercase tracking-widest text-white hover:opacity-50 transition-opacity">Contact</Link>
+          <div className="w-12 h-[1px] bg-white opacity-20" />
+          <button className="group relative">
+             <div className="w-8 h-[2px] bg-white mb-2 group-hover:w-4 transition-all" />
+             <div className="w-8 h-[2px] bg-white group-hover:w-12 transition-all" />
+          </button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden">
-        <motion.div
-          style={{ scale: heroScale, opacity: heroOpacity }}
-          className="text-center z-10 px-4"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-[10px] uppercase tracking-[0.6em] text-zinc-400 mb-6 block"
-          >
-            Digital Production Redefined
-          </motion.span>
-          <h1 className="text-7xl md:text-[10vw] font-black tracking-[-0.05em] leading-[0.9] uppercase mb-8">
-            Studio Soul.<br />
-            <span className="text-zinc-200">Zero Plastic.</span>
-          </h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12"
-          >
-             <p className="text-sm max-w-xs text-zinc-500 font-medium tracking-wide leading-relaxed text-center md:text-left">
-                Premium AI photoshoots for forward-thinking brands. Indistinguishable from high-end physical production.
-             </p>
-             <div className="h-px w-12 bg-zinc-200 hidden md:block" />
-             <Link href="/contact" className="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest">
-                Explore Services <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-             </Link>
-          </motion.div>
-        </motion.div>
+      {/* Hero Section - High Fashion Editorial */}
+      <section className="h-screen flex items-center justify-center px-8 relative overflow-hidden bg-white">
+        <div className="absolute inset-0 z-0">
+           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-zinc-100 rounded-full blur-[120px] opacity-50 animate-pulse" />
+           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-200 rounded-full blur-[120px] opacity-30" />
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-zinc-200 to-transparent" />
-          <span className="text-[9px] uppercase tracking-[0.4em] text-zinc-300">Scroll</span>
-        </motion.div>
+        <div className="z-10 text-center max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="text-[10px] uppercase tracking-[0.8em] text-zinc-400 mb-8 block font-black">Visual Engineering Studio</span>
+            <h1 className="text-8xl md:text-[14vw] font-black uppercase tracking-tighter leading-[0.8] mb-12">
+               Future<br />
+               <span className="text-zinc-200">Archive.</span>
+            </h1>
+            <div className="flex flex-col md:flex-row gap-12 items-center justify-center">
+               <Link href="/contact" className="bg-black text-white px-12 py-6 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform flex items-center gap-4">
+                 Book a Session <ChevronRight className="w-4 h-4" />
+               </Link>
+               <p className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 max-w-[200px] text-left leading-relaxed">
+                 Elite AI production for brands that demand perfection.
+               </p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-12 left-12 flex gap-8 items-center z-10">
+           <div className="flex gap-2">
+             <div className="w-1 h-1 bg-black rounded-full" />
+             <div className="w-1 h-1 bg-zinc-200 rounded-full" />
+             <div className="w-1 h-1 bg-zinc-200 rounded-full" />
+           </div>
+           <span className="text-[8px] font-bold uppercase tracking-[0.3em]">Scroll to Explore</span>
+        </div>
       </section>
 
       {/* Manifesto Section */}
-      <section className="py-64 px-8 bg-zinc-950 text-white relative overflow-hidden">
-        <div className="max-w-5xl mx-auto relative z-10">
+      <section className="py-48 px-8 bg-black text-white relative">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[10px] uppercase tracking-[0.5em] text-zinc-600 mb-12 block">The Zeno Manifesto</span>
@@ -242,6 +230,43 @@ export default function Home() {
                 </div>
               ))}
            </div>
+        </div>
+      </section>
+
+      {/* Portfolio CTA */}
+      <section className="py-32 px-8 bg-zinc-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
+              className="relative aspect-[16/9] bg-zinc-100 overflow-hidden"
+            >
+              <Image
+                src="/images/portfolio-main.png"
+                alt="Zeno Portfolio Teaser"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-[filter] duration-1000"
+              />
+            </motion.div>
+            <motion.div
+               initial={{ opacity: 0, x: 30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-6 block">Explore Our Work</span>
+              <h2 className="text-5xl font-bold mb-8 leading-tight uppercase tracking-tighter">The Portfolio.</h2>
+              <p className="text-lg text-zinc-600 font-light leading-relaxed mb-8">
+                A curated selection of our most challenging and successful visual engineering projects. Pushing the boundaries of what is possible.
+              </p>
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] border-b-2 border-black pb-1 hover:text-zinc-500 hover:border-zinc-500 transition-colors">
+                View Full Portfolio
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
