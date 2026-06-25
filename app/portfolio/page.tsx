@@ -9,23 +9,23 @@ export default function Portfolio() {
   return (
     <main className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 mix-blend-difference px-8 py-12 flex justify-between items-center">
-        <Link href="/" className="text-xl font-black uppercase tracking-[0.3em] text-white">Zeno</Link>
+      <nav className="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 md:px-8 py-8 md:py-12 flex justify-between items-center">
+        <Link href="/" className="text-lg md:text-xl font-black uppercase tracking-[0.3em] text-white">Zeno</Link>
         <Link href="/contact" className="text-[10px] font-bold uppercase tracking-widest text-white hover:opacity-50 transition-opacity">Contact</Link>
       </nav>
 
       {/* Hero / Header */}
-      <section className="pt-48 pb-24 px-8">
+      <section className="pt-32 md:pt-48 pb-16 md:pb-24 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-zinc-400 hover:text-black transition-colors mb-12">
+            <Link href="/" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-zinc-400 hover:text-black transition-colors mb-8 md:mb-12">
               <ArrowLeft className="w-3 h-3" /> Back to Studio
             </Link>
-            <h1 className="text-7xl md:text-[10vw] font-black uppercase tracking-tighter leading-[0.8] mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-[10vw] font-black uppercase tracking-tighter leading-[0.9] md:leading-[0.8] mb-8">
               The<br />Portfolio.
             </h1>
           </motion.div>
@@ -33,9 +33,9 @@ export default function Portfolio() {
       </section>
 
       {/* Image Grid / Content */}
-      <section className="px-8 pb-48">
+      <section className="px-6 md:px-8 pb-32 md:pb-48">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 gap-32">
+          <div className="grid grid-cols-1 gap-16 md:gap-32">
             {/* Main Featured Image */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -54,11 +54,11 @@ export default function Portfolio() {
             </motion.div>
 
             {/* Placeholder for future images */}
-            <div className="grid md:grid-cols-2 gap-8">
-               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center p-8 text-center">
                   <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-300">Archive_002 / Upcoming</span>
                </div>
-               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center">
+               <div className="aspect-square bg-zinc-50 border border-zinc-100 flex items-center justify-center p-8 text-center">
                   <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-300">Archive_003 / Upcoming</span>
                </div>
             </div>
@@ -67,8 +67,8 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-24 px-8 border-t border-zinc-100 text-center">
-        <p className="text-[10px] uppercase tracking-[0.5em] text-zinc-400">
+      <footer className="py-16 md:py-24 px-6 md:px-8 border-t border-zinc-100 text-center">
+        <p className="text-[8px] md:text-[10px] uppercase tracking-[0.5em] text-zinc-400">
           All visuals engineered by Zeno Studio © 2024
         </p>
       </footer>
